@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8082F5A298698A4002F2E66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8082F5C298698A4002F2E66 /* Localizable.strings */; };
+		A80EDFDB2BD2EBD5004152B6 /* AboutPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80EDFDA2BD2EBD5004152B6 /* AboutPreferenceViewController.m */; };
+		A8556A0028BA5BC5006FAD47 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85569FF28BA5BC5006FAD47 /* AppDelegate.mm */; };
+		A8556A0528BA5BC9006FAD47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8556A0428BA5BC9006FAD47 /* Assets.xcassets */; };
+		A8556A0828BA5BC9006FAD47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8556A0628BA5BC9006FAD47 /* Main.storyboard */; };
+		A8556A0A28BA5BC9006FAD47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8556A0928BA5BC9006FAD47 /* main.m */; };
+		A86EA2292B470BC700CE4A68 /* CFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A86EA2282B470BC700CE4A68 /* CFUtil.m */; };
+		A88E4C4528E62964000E21B8 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDF24428BBF814005ADC35 /* ServiceManagement.framework */; };
+		A88F1F9E2BDFE7A700349F4F /* CheckboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F942BDFE7A700349F4F /* CheckboxCell.m */; };
+		A88F1F9F2BDFE7A700349F4F /* SeparatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F992BDFE7A700349F4F /* SeparatorCell.m */; };
+		A88F1FA02BDFE7A700349F4F /* AbstractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F9A2BDFE7A700349F4F /* AbstractCell.m */; };
+		A88F1FA12BDFE7A700349F4F /* DropdownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F9B2BDFE7A700349F4F /* DropdownCell.m */; };
+		A88F1FA22BDFE7A700349F4F /* DescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F9C2BDFE7A700349F4F /* DescriptionCell.m */; };
+		A8A454902C119198008A6F06 /* discord_register_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A4545A2C119197008A6F06 /* discord_register_win.cpp */; };
+		A8A454912C119198008A6F06 /* connection_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A454822C119197008A6F06 /* connection_win.cpp */; };
+		A8A454922C119198008A6F06 /* discord_register_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A454832C119197008A6F06 /* discord_register_linux.cpp */; };
+		A8A454932C119198008A6F06 /* discord_register_osx.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A454862C119197008A6F06 /* discord_register_osx.m */; };
+		A8A454942C119198008A6F06 /* discord_rpc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A454872C119198008A6F06 /* discord_rpc.cpp */; };
+		A8A454952C119198008A6F06 /* rpc_connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A454892C119198008A6F06 /* rpc_connection.cpp */; };
+		A8A454962C119198008A6F06 /* serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A4548A2C119198008A6F06 /* serialization.cpp */; };
+		A8A454972C119198008A6F06 /* connection_unix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8A4548C2C119198008A6F06 /* connection_unix.cpp */; };
+		A8B28FA02BD46C3E0067030B /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B28F9F2BD46C3E0067030B /* MediaRemote.framework */; };
+		A8B4FE582C09541D0049985B /* AbstractPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B4FE572C09541D0049985B /* AbstractPreferenceViewController.m */; };
+		A8FDF23A28BBF151005ADC35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF23928BBF151005ADC35 /* main.m */; };
+		A8FDF24228BBF7FB005ADC35 /* MusicRPCAutoLauncher.app in Copy Files */ = {isa = PBXBuildFile; fileRef = A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B2125888AF95D2694492A291 /* PreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2125623128B2C3606CA7580 /* PreferenceManager.m */; };
+		B2125AB72487A673033672E8 /* PreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2125B326230C3C75848D2F0 /* PreferenceWindowController.m */; };
+		B2125DA27F8CA20715643BF6 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = B21254A00EF3E1447BAFBB91 /* Environment.m */; };
+		B2125DB99943D1992E86644F /* GeneralPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21259F55F9781B1FE48C8D3 /* GeneralPreferenceViewController.m */; };
+		B2125F6CB89AAE352D0BFA8C /* PreferenceTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2125658752882B4DB52A175 /* PreferenceTabViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A8FDF24128BBF7D0005ADC35 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				A8FDF24228BBF7FB005ADC35 /* MusicRPCAutoLauncher.app in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A8082F5B298698A4002F2E66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A80EDFD92BD2EBD5004152B6 /* AboutPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutPreferenceViewController.h; sourceTree = "<group>"; };
+		A80EDFDA2BD2EBD5004152B6 /* AboutPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutPreferenceViewController.m; sourceTree = "<group>"; };
+		A85569FB28BA5BC5006FAD47 /* MusicRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85569FE28BA5BC5006FAD47 /* AppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppDelegate.hpp; sourceTree = "<group>"; };
+		A85569FF28BA5BC5006FAD47 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		A8556A0428BA5BC9006FAD47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8556A0728BA5BC9006FAD47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A8556A0928BA5BC9006FAD47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8556A0B28BA5BC9006FAD47 /* MusicRPC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicRPC.entitlements; sourceTree = "<group>"; };
+		A8556A1128BA5D17006FAD47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A86EA2282B470BC700CE4A68 /* CFUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFUtil.m; sourceTree = "<group>"; };
+		A86EA22A2B470BCF00CE4A68 /* CFUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFUtil.h; sourceTree = "<group>"; };
+		A88F1F942BDFE7A700349F4F /* CheckboxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxCell.m; sourceTree = "<group>"; };
+		A88F1F952BDFE7A700349F4F /* DescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionCell.h; sourceTree = "<group>"; };
+		A88F1F962BDFE7A700349F4F /* CheckboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxCell.h; sourceTree = "<group>"; };
+		A88F1F972BDFE7A700349F4F /* AbstractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCell.h; sourceTree = "<group>"; };
+		A88F1F982BDFE7A700349F4F /* DropdownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownCell.h; sourceTree = "<group>"; };
+		A88F1F992BDFE7A700349F4F /* SeparatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorCell.m; sourceTree = "<group>"; };
+		A88F1F9A2BDFE7A700349F4F /* AbstractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCell.m; sourceTree = "<group>"; };
+		A88F1F9B2BDFE7A700349F4F /* DropdownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownCell.m; sourceTree = "<group>"; };
+		A88F1F9C2BDFE7A700349F4F /* DescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionCell.m; sourceTree = "<group>"; };
+		A88F1F9D2BDFE7A700349F4F /* SeparatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorCell.h; sourceTree = "<group>"; };
+		A8A4545A2C119197008A6F06 /* discord_register_win.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discord_register_win.cpp; sourceTree = "<group>"; };
+		A8A4545B2C119197008A6F06 /* en.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = en.h; sourceTree = "<group>"; };
+		A8A4545C2C119197008A6F06 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		A8A4545E2C119197008A6F06 /* biginteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = biginteger.h; sourceTree = "<group>"; };
+		A8A4545F2C119197008A6F06 /* diyfp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diyfp.h; sourceTree = "<group>"; };
+		A8A454602C119197008A6F06 /* dtoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtoa.h; sourceTree = "<group>"; };
+		A8A454612C119197008A6F06 /* ieee754.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ieee754.h; sourceTree = "<group>"; };
+		A8A454622C119197008A6F06 /* itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itoa.h; sourceTree = "<group>"; };
+		A8A454632C119197008A6F06 /* meta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
+		A8A454642C119197008A6F06 /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		A8A454652C119197008A6F06 /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regex.h; sourceTree = "<group>"; };
+		A8A454662C119197008A6F06 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		A8A454672C119197008A6F06 /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		A8A454682C119197008A6F06 /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
+		A8A454692C119197008A6F06 /* swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swap.h; sourceTree = "<group>"; };
+		A8A4546B2C119197008A6F06 /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
+		A8A4546C2C119197008A6F06 /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
+		A8A4546E2C119197008A6F06 /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
+		A8A4546F2C119197008A6F06 /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		A8A454702C119197008A6F06 /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
+		A8A454712C119197008A6F06 /* encodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodings.h; sourceTree = "<group>"; };
+		A8A454722C119197008A6F06 /* filereadstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filereadstream.h; sourceTree = "<group>"; };
+		A8A454732C119197008A6F06 /* filewritestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filewritestream.h; sourceTree = "<group>"; };
+		A8A454742C119197008A6F06 /* fwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fwd.h; sourceTree = "<group>"; };
+		A8A454752C119197008A6F06 /* istreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = istreamwrapper.h; sourceTree = "<group>"; };
+		A8A454762C119197008A6F06 /* memorybuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorybuffer.h; sourceTree = "<group>"; };
+		A8A454772C119197008A6F06 /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
+		A8A454782C119197008A6F06 /* ostreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ostreamwrapper.h; sourceTree = "<group>"; };
+		A8A454792C119197008A6F06 /* pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointer.h; sourceTree = "<group>"; };
+		A8A4547A2C119197008A6F06 /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		A8A4547B2C119197008A6F06 /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		A8A4547C2C119197008A6F06 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		A8A4547D2C119197008A6F06 /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
+		A8A4547E2C119197008A6F06 /* stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream.h; sourceTree = "<group>"; };
+		A8A4547F2C119197008A6F06 /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		A8A454802C119197008A6F06 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		A8A454822C119197008A6F06 /* connection_win.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection_win.cpp; sourceTree = "<group>"; };
+		A8A454832C119197008A6F06 /* discord_register_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discord_register_linux.cpp; sourceTree = "<group>"; };
+		A8A454842C119197008A6F06 /* discord_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discord_register.h; sourceTree = "<group>"; };
+		A8A454852C119197008A6F06 /* msg_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msg_queue.h; sourceTree = "<group>"; };
+		A8A454862C119197008A6F06 /* discord_register_osx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = discord_register_osx.m; sourceTree = "<group>"; };
+		A8A454872C119198008A6F06 /* discord_rpc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discord_rpc.cpp; sourceTree = "<group>"; };
+		A8A454882C119198008A6F06 /* backoff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backoff.h; sourceTree = "<group>"; };
+		A8A454892C119198008A6F06 /* rpc_connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rpc_connection.cpp; sourceTree = "<group>"; };
+		A8A4548A2C119198008A6F06 /* serialization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = serialization.cpp; sourceTree = "<group>"; };
+		A8A4548B2C119198008A6F06 /* serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialization.h; sourceTree = "<group>"; };
+		A8A4548C2C119198008A6F06 /* connection_unix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection_unix.cpp; sourceTree = "<group>"; };
+		A8A4548D2C119198008A6F06 /* rpc_connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpc_connection.h; sourceTree = "<group>"; };
+		A8A4548E2C119198008A6F06 /* connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		A8A4548F2C119198008A6F06 /* discord_rpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discord_rpc.h; sourceTree = "<group>"; };
+		A8B28F9E2BD469B50067030B /* MediaRemote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaRemote.h; sourceTree = "<group>"; };
+		A8B28F9F2BD46C3E0067030B /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = DEVELOPER_DIR; };
+		A8B4FE562C0953FF0049985B /* AbstractPreferenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractPreferenceViewController.h; sourceTree = "<group>"; };
+		A8B4FE572C09541D0049985B /* AbstractPreferenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbstractPreferenceViewController.m; sourceTree = "<group>"; };
+		A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicRPCAutoLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8FDF23928BBF151005ADC35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8FDF23B28BBF151005ADC35 /* MusicRPCAutoLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicRPCAutoLauncher.entitlements; sourceTree = "<group>"; };
+		A8FDF23F28BBF179005ADC35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A8FDF24428BBF814005ADC35 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		B21253C8C9B0EDA93D22F115 /* PreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceManager.h; sourceTree = "<group>"; };
+		B21253CCBEBDFB0CFA716D47 /* PreferenceTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceTabViewController.h; sourceTree = "<group>"; };
+		B21253FAA5F5D076A833B709 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		B21254A00EF3E1447BAFBB91 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
+		B21254C101234B24C2540F4B /* PreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceWindowController.h; sourceTree = "<group>"; };
+		B212552A93929C314EB65C43 /* PreferenceKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceKeys.h; sourceTree = "<group>"; };
+		B2125623128B2C3606CA7580 /* PreferenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceManager.m; sourceTree = "<group>"; };
+		B2125658752882B4DB52A175 /* PreferenceTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceTabViewController.m; sourceTree = "<group>"; };
+		B21259F55F9781B1FE48C8D3 /* GeneralPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferenceViewController.m; sourceTree = "<group>"; };
+		B2125B326230C3C75848D2F0 /* PreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceWindowController.m; sourceTree = "<group>"; };
+		B2125BB2674B656605D1A51D /* GeneralPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferenceViewController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A85569F828BA5BC5006FAD47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A88E4C4528E62964000E21B8 /* ServiceManagement.framework in Frameworks */,
+				A8B28FA02BD46C3E0067030B /* MediaRemote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8FDF22928BBF150005ADC35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A80EDFDC2BD2EE04004152B6 /* RPC */ = {
+			isa = PBXGroup;
+			children = (
+				A8A454882C119198008A6F06 /* backoff.h */,
+				A8A4548C2C119198008A6F06 /* connection_unix.cpp */,
+				A8A454822C119197008A6F06 /* connection_win.cpp */,
+				A8A4548E2C119198008A6F06 /* connection.h */,
+				A8A454832C119197008A6F06 /* discord_register_linux.cpp */,
+				A8A454862C119197008A6F06 /* discord_register_osx.m */,
+				A8A4545A2C119197008A6F06 /* discord_register_win.cpp */,
+				A8A454842C119197008A6F06 /* discord_register.h */,
+				A8A454872C119198008A6F06 /* discord_rpc.cpp */,
+				A8A4548F2C119198008A6F06 /* discord_rpc.h */,
+				A8A454852C119197008A6F06 /* msg_queue.h */,
+				A8A454812C119197008A6F06 /* rapidjson */,
+				A8A454892C119198008A6F06 /* rpc_connection.cpp */,
+				A8A4548D2C119198008A6F06 /* rpc_connection.h */,
+				A8A4548A2C119198008A6F06 /* serialization.cpp */,
+				A8A4548B2C119198008A6F06 /* serialization.h */,
+			);
+			path = RPC;
+			sourceTree = "<group>";
+		};
+		A85569F228BA5BC4006FAD47 = {
+			isa = PBXGroup;
+			children = (
+				A8082F5C298698A4002F2E66 /* Localizable.strings */,
+				A85569FD28BA5BC5006FAD47 /* MusicRPC */,
+				A8FDF22D28BBF150005ADC35 /* MusicRPCAutoLauncher */,
+				A85569FC28BA5BC5006FAD47 /* Products */,
+				A8FDF24328BBF814005ADC35 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A85569FC28BA5BC5006FAD47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A85569FB28BA5BC5006FAD47 /* MusicRPC.app */,
+				A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A85569FD28BA5BC5006FAD47 /* MusicRPC */ = {
+			isa = PBXGroup;
+			children = (
+				B212509874454099121E0B4C /* Preferences */,
+				B2125F6DD83EBBE1893E27B3 /* Utils */,
+				A80EDFDC2BD2EE04004152B6 /* RPC */,
+				A8556A1128BA5D17006FAD47 /* Info.plist */,
+				A85569FF28BA5BC5006FAD47 /* AppDelegate.mm */,
+				A85569FE28BA5BC5006FAD47 /* AppDelegate.hpp */,
+				B21254A00EF3E1447BAFBB91 /* Environment.m */,
+				B21253FAA5F5D076A833B709 /* Environment.h */,
+				A8B28F9E2BD469B50067030B /* MediaRemote.h */,
+				A8556A0428BA5BC9006FAD47 /* Assets.xcassets */,
+				A8556A0628BA5BC9006FAD47 /* Main.storyboard */,
+				A8556A0928BA5BC9006FAD47 /* main.m */,
+				A8556A0B28BA5BC9006FAD47 /* MusicRPC.entitlements */,
+			);
+			path = MusicRPC;
+			sourceTree = "<group>";
+		};
+		A87EFFC52B4973450050D6DF /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				B212510A164E98EB3CA0C634 /* Cells */,
+				A8B4FE572C09541D0049985B /* AbstractPreferenceViewController.m */,
+				A8B4FE562C0953FF0049985B /* AbstractPreferenceViewController.h */,
+				B21259F55F9781B1FE48C8D3 /* GeneralPreferenceViewController.m */,
+				B2125BB2674B656605D1A51D /* GeneralPreferenceViewController.h */,
+				A80EDFDA2BD2EBD5004152B6 /* AboutPreferenceViewController.m */,
+				A80EDFD92BD2EBD5004152B6 /* AboutPreferenceViewController.h */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A8A4545D2C119197008A6F06 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4545B2C119197008A6F06 /* en.h */,
+				A8A4545C2C119197008A6F06 /* error.h */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		A8A4546A2C119197008A6F06 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4545E2C119197008A6F06 /* biginteger.h */,
+				A8A4545F2C119197008A6F06 /* diyfp.h */,
+				A8A454602C119197008A6F06 /* dtoa.h */,
+				A8A454612C119197008A6F06 /* ieee754.h */,
+				A8A454622C119197008A6F06 /* itoa.h */,
+				A8A454632C119197008A6F06 /* meta.h */,
+				A8A454642C119197008A6F06 /* pow10.h */,
+				A8A454652C119197008A6F06 /* regex.h */,
+				A8A454662C119197008A6F06 /* stack.h */,
+				A8A454672C119197008A6F06 /* strfunc.h */,
+				A8A454682C119197008A6F06 /* strtod.h */,
+				A8A454692C119197008A6F06 /* swap.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		A8A4546D2C119197008A6F06 /* msinttypes */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4546B2C119197008A6F06 /* inttypes.h */,
+				A8A4546C2C119197008A6F06 /* stdint.h */,
+			);
+			path = msinttypes;
+			sourceTree = "<group>";
+		};
+		A8A454812C119197008A6F06 /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4545D2C119197008A6F06 /* error */,
+				A8A4546A2C119197008A6F06 /* internal */,
+				A8A4546D2C119197008A6F06 /* msinttypes */,
+				A8A4546E2C119197008A6F06 /* allocators.h */,
+				A8A4546F2C119197008A6F06 /* document.h */,
+				A8A454702C119197008A6F06 /* encodedstream.h */,
+				A8A454712C119197008A6F06 /* encodings.h */,
+				A8A454722C119197008A6F06 /* filereadstream.h */,
+				A8A454732C119197008A6F06 /* filewritestream.h */,
+				A8A454742C119197008A6F06 /* fwd.h */,
+				A8A454752C119197008A6F06 /* istreamwrapper.h */,
+				A8A454762C119197008A6F06 /* memorybuffer.h */,
+				A8A454772C119197008A6F06 /* memorystream.h */,
+				A8A454782C119197008A6F06 /* ostreamwrapper.h */,
+				A8A454792C119197008A6F06 /* pointer.h */,
+				A8A4547A2C119197008A6F06 /* prettywriter.h */,
+				A8A4547B2C119197008A6F06 /* rapidjson.h */,
+				A8A4547C2C119197008A6F06 /* reader.h */,
+				A8A4547D2C119197008A6F06 /* schema.h */,
+				A8A4547E2C119197008A6F06 /* stream.h */,
+				A8A4547F2C119197008A6F06 /* stringbuffer.h */,
+				A8A454802C119197008A6F06 /* writer.h */,
+			);
+			path = rapidjson;
+			sourceTree = "<group>";
+		};
+		A8FDF22D28BBF150005ADC35 /* MusicRPCAutoLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				A8FDF23F28BBF179005ADC35 /* Info.plist */,
+				A8FDF23928BBF151005ADC35 /* main.m */,
+				A8FDF23B28BBF151005ADC35 /* MusicRPCAutoLauncher.entitlements */,
+			);
+			path = MusicRPCAutoLauncher;
+			sourceTree = "<group>";
+		};
+		A8FDF24328BBF814005ADC35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8B28F9F2BD46C3E0067030B /* MediaRemote.framework */,
+				A8FDF24428BBF814005ADC35 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B212509874454099121E0B4C /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				A87EFFC52B4973450050D6DF /* Tabs */,
+				B2125B326230C3C75848D2F0 /* PreferenceWindowController.m */,
+				B21254C101234B24C2540F4B /* PreferenceWindowController.h */,
+				B2125658752882B4DB52A175 /* PreferenceTabViewController.m */,
+				B21253CCBEBDFB0CFA716D47 /* PreferenceTabViewController.h */,
+				B2125623128B2C3606CA7580 /* PreferenceManager.m */,
+				B21253C8C9B0EDA93D22F115 /* PreferenceManager.h */,
+				B212552A93929C314EB65C43 /* PreferenceKeys.h */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		B212510A164E98EB3CA0C634 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A88F1F9A2BDFE7A700349F4F /* AbstractCell.m */,
+				A88F1F972BDFE7A700349F4F /* AbstractCell.h */,
+				A88F1F942BDFE7A700349F4F /* CheckboxCell.m */,
+				A88F1F962BDFE7A700349F4F /* CheckboxCell.h */,
+				A88F1F9C2BDFE7A700349F4F /* DescriptionCell.m */,
+				A88F1F952BDFE7A700349F4F /* DescriptionCell.h */,
+				A88F1F9B2BDFE7A700349F4F /* DropdownCell.m */,
+				A88F1F982BDFE7A700349F4F /* DropdownCell.h */,
+				A88F1F992BDFE7A700349F4F /* SeparatorCell.m */,
+				A88F1F9D2BDFE7A700349F4F /* SeparatorCell.h */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B2125F6DD83EBBE1893E27B3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A86EA22A2B470BCF00CE4A68 /* CFUtil.h */,
+				A86EA2282B470BC700CE4A68 /* CFUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A85569FA28BA5BC5006FAD47 /* MusicRPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8556A0E28BA5BC9006FAD47 /* Build configuration list for PBXNativeTarget "MusicRPC" */;
+			buildPhases = (
+				A85569F728BA5BC5006FAD47 /* Sources */,
+				A85569F828BA5BC5006FAD47 /* Frameworks */,
+				A85569F928BA5BC5006FAD47 /* Resources */,
+				A8FDF24128BBF7D0005ADC35 /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicRPC;
+			productName = MusicRPC;
+			productReference = A85569FB28BA5BC5006FAD47 /* MusicRPC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A8FDF22B28BBF150005ADC35 /* MusicRPCAutoLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8FDF23E28BBF151005ADC35 /* Build configuration list for PBXNativeTarget "MusicRPCAutoLauncher" */;
+			buildPhases = (
+				A8FDF22828BBF150005ADC35 /* Sources */,
+				A8FDF22928BBF150005ADC35 /* Frameworks */,
+				A8FDF22A28BBF150005ADC35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicRPCAutoLauncher;
+			productName = MusicRPCAutoLauncher;
+			productReference = A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A85569F328BA5BC4006FAD47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					A85569FA28BA5BC5006FAD47 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					A8FDF22B28BBF150005ADC35 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = A85569F628BA5BC5006FAD47 /* Build configuration list for PBXProject "MusicRPC" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A85569F228BA5BC4006FAD47;
+			productRefGroup = A85569FC28BA5BC5006FAD47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A85569FA28BA5BC5006FAD47 /* MusicRPC */,
+				A8FDF22B28BBF150005ADC35 /* MusicRPCAutoLauncher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A85569F928BA5BC5006FAD47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8556A0528BA5BC9006FAD47 /* Assets.xcassets in Resources */,
+				A8082F5A298698A4002F2E66 /* Localizable.strings in Resources */,
+				A8556A0828BA5BC9006FAD47 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8FDF22A28BBF150005ADC35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A85569F728BA5BC5006FAD47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A454962C119198008A6F06 /* serialization.cpp in Sources */,
+				A8556A0A28BA5BC9006FAD47 /* main.m in Sources */,
+				A88F1FA12BDFE7A700349F4F /* DropdownCell.m in Sources */,
+				A8A454902C119198008A6F06 /* discord_register_win.cpp in Sources */,
+				A88F1F9F2BDFE7A700349F4F /* SeparatorCell.m in Sources */,
+				A8A454942C119198008A6F06 /* discord_rpc.cpp in Sources */,
+				A8556A0028BA5BC5006FAD47 /* AppDelegate.mm in Sources */,
+				B2125DA27F8CA20715643BF6 /* Environment.m in Sources */,
+				A88F1FA02BDFE7A700349F4F /* AbstractCell.m in Sources */,
+				A8A454912C119198008A6F06 /* connection_win.cpp in Sources */,
+				A8A454932C119198008A6F06 /* discord_register_osx.m in Sources */,
+				B2125888AF95D2694492A291 /* PreferenceManager.m in Sources */,
+				B2125AB72487A673033672E8 /* PreferenceWindowController.m in Sources */,
+				A88F1F9E2BDFE7A700349F4F /* CheckboxCell.m in Sources */,
+				B2125DB99943D1992E86644F /* GeneralPreferenceViewController.m in Sources */,
+				A8A454972C119198008A6F06 /* connection_unix.cpp in Sources */,
+				A8A454922C119198008A6F06 /* discord_register_linux.cpp in Sources */,
+				A8A454952C119198008A6F06 /* rpc_connection.cpp in Sources */,
+				A88F1FA22BDFE7A700349F4F /* DescriptionCell.m in Sources */,
+				A86EA2292B470BC700CE4A68 /* CFUtil.m in Sources */,
+				B2125F6CB89AAE352D0BFA8C /* PreferenceTabViewController.m in Sources */,
+				A8B4FE582C09541D0049985B /* AbstractPreferenceViewController.m in Sources */,
+				A80EDFDB2BD2EBD5004152B6 /* AboutPreferenceViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8FDF22828BBF150005ADC35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8FDF23A28BBF151005ADC35 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A8082F5C298698A4002F2E66 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8082F5B298698A4002F2E66 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A8556A0628BA5BC9006FAD47 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8556A0728BA5BC9006FAD47 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A8556A0C28BA5BC9006FAD47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A8556A0D28BA5BC9006FAD47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A8556A0F28BA5BC9006FAD47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRPC/MusicRPC.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4BJG5RF6F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicRPC/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.aurora.MusicRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		A8556A1028BA5BC9006FAD47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRPC/MusicRPC.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4BJG5RF6F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicRPC/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.aurora.MusicRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		A8FDF23C28BBF151005ADC35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRPCAutoLauncher/MusicRPCAutoLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4BJG5RF6F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicRPCAutoLauncher/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.aurora.MusicRPCAutoLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		A8FDF23D28BBF151005ADC35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRPCAutoLauncher/MusicRPCAutoLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 4BJG5RF6F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicRPCAutoLauncher/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.aurora.MusicRPCAutoLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A85569F628BA5BC5006FAD47 /* Build configuration list for PBXProject "MusicRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8556A0C28BA5BC9006FAD47 /* Debug */,
+				A8556A0D28BA5BC9006FAD47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8556A0E28BA5BC9006FAD47 /* Build configuration list for PBXNativeTarget "MusicRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8556A0F28BA5BC9006FAD47 /* Debug */,
+				A8556A1028BA5BC9006FAD47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8FDF23E28BBF151005ADC35 /* Build configuration list for PBXNativeTarget "MusicRPCAutoLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8FDF23C28BBF151005ADC35 /* Debug */,
+				A8FDF23D28BBF151005ADC35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A85569F328BA5BC4006FAD47 /* Project object */;
+}
