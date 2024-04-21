@@ -1,0 +1,41 @@
+/*
+  Localizable.strings
+  MusicRPC
+
+  Created by Alexandra Aurora Göttlicher
+
+*/
+
+"StatusItemNowPlaying" = "Now Playing";
+"StatusItemNotPlaying" = "Not Playing";
+"StatusItemAbout" = "About";
+"StatusItemPreferences" = "Preferences";
+"StatusItemQuit" = "Quit";
+
+// Ignore these.
+"AppleMusic" = "Apple Music";
+"Spotify" = "Spotify";
+"Tidal" = "TIDAL";
+"Deezer" = "Deezer";
+
+"SmallImageDescription" = "Listening to";
+
+"PreferencesTabGeneral" = "General";
+"PreferencesTabGeneralPreferences" = "General Preferences";
+"PreferencesTabAbout" = "About";
+"PreferencesTabAboutPreferences" = "About Preferences";
+
+"GeneralPreferencesEnabledApps" = "Enabled Apps";
+"GeneralPreferencesStartup" = "Startup";
+"GeneralPreferencesStartupLabel" = "Launch at login";
+
+"AboutPreferencesVersion" = "Version";
+"AboutPreferencesSponsor" = "Sponsor this project";
+"AboutPreferencesSponsorAcknowledgement" = "Let me know that you like what I do.";
+"AboutPreferencesGitHub" = "View Source Code on GitHub";
+"AboutPreferencesCredits" = "Thanks to you and everyone who has helped in any way.";
+"AboutPreferencesCreditsLeptos" = "Helped setting up MediaRemote - leptos-null";
+"AboutPreferencesCreditsEinTim23" = "Helped setting up the Discord Game SDK - EinTim23";
+"AboutPreferencesCreditsNextFire" = "Inspired the way to get the artwork - NextFire";
+// Ignore this.
+"AboutPreferencesCopyright" = "Alexandra Aurora Göttlicher";
