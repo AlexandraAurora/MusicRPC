@@ -299,7 +299,7 @@ void updateRichPresence() {
 
         DiscordRichPresence activity{};
         activity.details = [songTitle UTF8String];
-        activity.state = [songArtist UTF8String];
+        activity.state = [[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"StatePrefix", nil), songArtist] UTF8String];
 
         if (artworkUrl) {
             activity.largeImageKey = [[artworkUrl absoluteString] UTF8String];

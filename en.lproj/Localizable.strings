@@ -18,6 +18,7 @@
 "Tidal" = "TIDAL";
 "Deezer" = "Deezer";
 
+"StatePrefix" = "by";
 "SmallImageDescription" = "Listening to";
 "LookupButtonTitle" = "Search on";
 
