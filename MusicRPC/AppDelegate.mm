@@ -380,12 +380,14 @@ void killRichPresence() {
     NSURL* url = [NSURL URLWithString:[kItunesApiEndpoint stringByAppendingString:term]];
     NSURLSessionDataTask* task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData* _Nullable data, NSURLResponse* _Nullable response, NSError* _Nullable error) {
         if (error) {
+            self->_lastArtworkUrl = nil;
             completion(nil);
             return;
         }
 
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         if (error) {
+            self->_lastArtworkUrl = nil;
             completion(nil);
             return;
         }
@@ -398,6 +400,7 @@ void killRichPresence() {
             return;
         }
 
+        self->_lastArtworkUrl = nil;
         completion(nil);
     }];
 
