@@ -14,6 +14,7 @@
 @property(nonatomic, assign)BOOL spotifyEnabled;
 @property(nonatomic, assign)BOOL tidalEnabled;
 @property(nonatomic, assign)BOOL deezerEnabled;
+@property(nonatomic, assign)BOOL foobar2000Enabled;
 @property(nonatomic, assign)BOOL launchAtLogin;
 - (void)setPreference:(id)value forKey:(NSString *)key;
 @end

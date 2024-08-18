@@ -26,6 +26,7 @@
         kPreferenceKeySpotifyEnabled: @(kPreferenceKeySpotifyEnabledDefaultValue),
         kPreferenceKeyTidalEnabled: @(kPreferenceKeyTidalEnabledDefaultValue),
         kPreferenceKeyDeezerEnabled: @(kPreferenceKeyDeezerEnabledDefaultValue),
+        kPreferenceKeyFoobar2000Enabled: @(kPreferenceKeyFoobar2000EnabledDefaultValue),
         kPreferenceKeyLaunchAtLogin: @(kPreferenceKeyLaunchAtLoginDefaultValue)
     }];
 
@@ -33,6 +34,7 @@
     [self setSpotifyEnabled:[[_userDefaults objectForKey:kPreferenceKeySpotifyEnabled] boolValue]];
     [self setTidalEnabled:[[_userDefaults objectForKey:kPreferenceKeyTidalEnabled] boolValue]];
     [self setDeezerEnabled:[[_userDefaults objectForKey:kPreferenceKeyDeezerEnabled] boolValue]];
+    [self setFoobar2000Enabled:[[_userDefaults objectForKey:kPreferenceKeyFoobar2000Enabled] boolValue]];
     [self setLaunchAtLogin:[[_userDefaults objectForKey:kPreferenceKeyLaunchAtLogin] boolValue]];
 }
 
