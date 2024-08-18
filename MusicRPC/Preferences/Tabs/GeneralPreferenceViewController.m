@@ -29,7 +29,7 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
-    [[[self view] window] setContentSize:NSSizeFromCGSize(CGSizeMake(430, 190))];
+    [[[self view] window] setContentSize:NSSizeFromCGSize(CGSizeMake(430, 217))];
 }
 
 - (void)loadView {
@@ -92,13 +92,27 @@
         [[[self deezerEnabledCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
         [[[self deezerEnabledCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
+    
+    [self setFoobar2000EnabledCell:[[CheckboxCell alloc] init]];
+    [[self foobar2000EnabledCell] setTarget:self];
+    [[self foobar2000EnabledCell] setAction:@selector(setFoobar2000Enabled)];
+    [[self foobar2000EnabledCell] setCheckboxTitle:NSLocalizedString(@"Foobar2000", nil)];
+    [[self view] addSubview:[self foobar2000EnabledCell]];
+
+    [[self foobar2000EnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [NSLayoutConstraint activateConstraints:@[
+        [[[self foobar2000EnabledCell] heightAnchor] constraintEqualToConstant:20],
+        [[[self foobar2000EnabledCell] topAnchor] constraintEqualToAnchor:[[self deezerEnabledCell] bottomAnchor] constant:8],
+        [[[self foobar2000EnabledCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
+        [[[self foobar2000EnabledCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
+    ]];
 
     [self setSeparatorCell:[[SeparatorCell alloc] init]];
     [[self view] addSubview:[self separatorCell]];
 
     [[self separatorCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
     [NSLayoutConstraint activateConstraints:@[
-        [[[self separatorCell] topAnchor] constraintEqualToAnchor:[[self deezerEnabledCell] bottomAnchor] constant:16],
+        [[[self separatorCell] topAnchor] constraintEqualToAnchor:[[self foobar2000EnabledCell] bottomAnchor] constant:16],
         [[[self separatorCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
         [[[self separatorCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
@@ -147,6 +161,12 @@
     [_appDelegate loadPreferences];
 }
 
+- (void)setFoobar2000Enabled {
+    BOOL foobar2000Enabled = [[self foobar2000EnabledCell] getIsOn];
+    [_preferenceManager setPreference:@(foobar2000Enabled) forKey:kPreferenceKeyFoobar2000Enabled];
+    [_appDelegate loadPreferences];
+}
+
 - (void)setLaunchAtLogin {
     BOOL launchAtLogin = [[self launchAtLoginCell] getIsOn];
     [_preferenceManager setPreference:@(launchAtLogin) forKey:kPreferenceKeyLaunchAtLogin];
@@ -158,12 +178,14 @@
     BOOL spotifyEnabled = [_preferenceManager spotifyEnabled];
     BOOL tidalEnabled = [_preferenceManager tidalEnabled];
     BOOL deezerEnabled = [_preferenceManager deezerEnabled];
+    BOOL foobar2000Enabled = [_preferenceManager foobar2000Enabled];
     BOOL launchAtLogin = [_preferenceManager launchAtLogin];
 
     [[self appleMusicEnabledCell] setOn:appleMusicEnabled];
     [[self spotifyEnabledCell] setOn:spotifyEnabled];
     [[self tidalEnabledCell] setOn:tidalEnabled];
     [[self deezerEnabledCell] setOn:deezerEnabled];
+    [[self foobar2000EnabledCell] setOn:foobar2000Enabled];
     [[self launchAtLoginCell] setOn:launchAtLogin];
 }
 @end

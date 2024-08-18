@@ -40,13 +40,15 @@
         kBundleIdentifierAppleMusic: kClientIdAppleMusic,
         kBundleIdentifierSpotify: kClientIdSpotify,
         kBundleIdentifierTidal: kClientIdTidal,
-        kBundleIdentifierDeezer: kClientIdDeezer
+        kBundleIdentifierDeezer: kClientIdDeezer,
+        kBundleIdentifierFoobar2000: kClientIdFoobar2000
     };
     _serviceMap = @{
         kBundleIdentifierAppleMusic: NSLocalizedString(@"AppleMusic", nil),
         kBundleIdentifierSpotify: NSLocalizedString(@"Spotify", nil),
         kBundleIdentifierTidal: NSLocalizedString(@"Tidal", nil),
-        kBundleIdentifierDeezer: NSLocalizedString(@"Deezer", nil)
+        kBundleIdentifierDeezer: NSLocalizedString(@"Deezer", nil),
+        kBundleIdentifierFoobar2000: NSLocalizedString(@"Foobar2000", nil)
     };
     _lookupEndpointMap = @{
         kBundleIdentifierAppleMusic: kLookupEndpointAppleMusic,
@@ -319,14 +321,17 @@ void updateRichPresence() {
             activity.endTimestamp = time(nullptr) + (NSUInteger)remainingTime;
         }
 
-        NSString* button1Title = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"LookupButtonTitle", nil), self->_serviceMap[bundleIdentifier]];
+        NSString* lookupEndpoint = self->_lookupEndpointMap[bundleIdentifier];
+        if (lookupEndpoint) {
+            NSString* button1Title = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"LookupButtonTitle", nil), self->_serviceMap[bundleIdentifier]];
 
-        NSString* query = [NSString stringWithFormat:@"%@ %@", songTitle, songArtist];
-        [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        NSURL* button1Url = [NSURL URLWithString:[self->_lookupEndpointMap[bundleIdentifier] stringByAppendingString:query]];
+            NSString* query = [NSString stringWithFormat:@"%@ %@", songTitle, songArtist];
+            [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            NSURL* button1Url = [NSURL URLWithString:[lookupEndpoint stringByAppendingString:query]];
 
-        activity.button1name = [button1Title UTF8String];
-        activity.button1link = [[button1Url absoluteString] UTF8String];
+            activity.button1name = [button1Title UTF8String];
+            activity.button1link = [[button1Url absoluteString] UTF8String];
+        }
 
         Discord_UpdatePresence(&activity);
     }];
@@ -461,6 +466,7 @@ void killRichPresence() {
     pfSpotifyEnabled = [preferenceManager spotifyEnabled];
     pfTidalEnabled = [preferenceManager tidalEnabled];
     pfDeezerEnabled = [preferenceManager deezerEnabled];
+    pfFoobar2000Enabled = [preferenceManager foobar2000Enabled];
 
     enabledApps = [@[] mutableCopy];
     if (pfAppleMusicEnabled) {
@@ -474,6 +480,9 @@ void killRichPresence() {
     }
     if (pfDeezerEnabled) {
         [enabledApps addObject:kBundleIdentifierDeezer];
+    }
+    if (pfFoobar2000Enabled) {
+        [enabledApps addObject:kBundleIdentifierFoobar2000];
     }
 
     // Initialize the RPC again after preferences have changed.

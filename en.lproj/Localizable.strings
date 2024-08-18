@@ -17,6 +17,7 @@
 "Spotify" = "Spotify";
 "Tidal" = "TIDAL";
 "Deezer" = "Deezer";
+"Foobar2000" = "foobar2000";
 
 "StatePrefix" = "by";
 "SmallImageDescription" = "Listening to";

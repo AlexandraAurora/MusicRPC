@@ -18,6 +18,7 @@
 @property(nonatomic)CheckboxCell* spotifyEnabledCell;
 @property(nonatomic)CheckboxCell* tidalEnabledCell;
 @property(nonatomic)CheckboxCell* deezerEnabledCell;
+@property(nonatomic)CheckboxCell* foobar2000EnabledCell;
 @property(nonatomic)SeparatorCell* separatorCell;
 @property(nonatomic)CheckboxCell* launchAtLoginCell;
 @end
