@@ -1,0 +1,3 @@
+[submodule "MusicRPC/RPC"]
+	path = MusicRPC/RPC
+	url = https://github.com/EinTim23/discord-rpc.git
