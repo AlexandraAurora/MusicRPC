@@ -300,6 +300,7 @@ void updateRichPresence() {
         }
 
         DiscordRichPresence activity{};
+        activity.type = LISTENING;
         activity.details = [songTitle UTF8String];
         activity.state = [[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"StatePrefix", nil), songArtist] UTF8String];
 
