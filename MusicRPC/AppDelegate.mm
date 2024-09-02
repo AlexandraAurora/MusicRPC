@@ -15,9 +15,19 @@
 #import "Utils/CFUtil.h"
 
 @interface AppDelegate ()
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSURL *> *artworkCache; // Add this property to hold the cache
 @end
 
 @implementation AppDelegate
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self loadArtworkCache];
+    }
+    return self;
+}
+
 /**
  * Registers and initializes required classes for later use.
  */
@@ -284,7 +294,7 @@ NSString* getClientId() {
 void updateRichPresence() {
     AppDelegate* self = [[Environment sharedInstance] appDelegate];
 
-    [self fetchItunesArtworkForNowPlayingInfo:self->_nowPlayingInfo completion:^(NSURL* artworkUrl) {
+    [self getAlbumArtwork:[self getArtworkBase64FromNowPlayingInfo:self->_nowPlayingInfo] completion:^(NSURL *artworkUrl, NSError *error) {
         NSString* bundleIdentifier = [self getBundleIdentifierForNowPlayingApplicationWithPID:self->_nowPlayingApplicationPID];
         NSString* songTitle = [self getTitleFromNowPlayingInfo:self->_nowPlayingInfo];
         NSString* songAlbum = [self getAlbumFromNowPlayingInfo:self->_nowPlayingInfo];
@@ -306,7 +316,6 @@ void updateRichPresence() {
 
         if (artworkUrl) {
             activity.largeImageKey = [[artworkUrl absoluteString] UTF8String];
-
             NSString* description = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"SmallImageDescription", nil), self->_serviceMap[bundleIdentifier]];
             activity.smallImageKey = [@"appicon" UTF8String];
             activity.smallImageText = [description UTF8String];
@@ -365,52 +374,93 @@ void killRichPresence() {
 
 /**
  * Fetches the artwork for the current song.
+ *
+ * It's trivial to get the album artwork because we're using the MediaRemote framework; however, getting it to show up in Discord is a bit more complicated.
+ * We need to upload the artwork to a hosting service and then provide the URL to Discord.
+ * This function takes the base64 encoded artwork data, uploads it to freeimage.host, and then returns the URL. The URL and artwork data are then cached on disk for future use.
+ *
+ * In comparison to using the iTunes API, we don't have to worry about the artwork matching because we're grabbing the artwork directly associated with the current track (if applicable).
  */
-- (void)fetchItunesArtworkForNowPlayingInfo:(NSDictionary *)nowPlayingInfo completion:(void (^)(NSURL* artworkUrl))completion {
-    NSString* songTitle = [self getTitleFromNowPlayingInfo:self->_nowPlayingInfo];
-    NSString* songArtist = [self getArtistFromNowPlayingInfo:self->_nowPlayingInfo];
-    NSString* songAlbum = [self getAlbumFromNowPlayingInfo:self->_nowPlayingInfo];
-
-    // If the last search term contains the same artist and album name, return the last artwork url.
-    if ([_lastArtworkTerm containsString:[NSString stringWithFormat:@"%@ %@", songArtist, songAlbum]]) {
-        completion(_lastArtworkUrl);
+- (void)getAlbumArtwork:(NSString *)base64ImageData completion:(void (^)(NSURL * _Nullable imageURL, NSError * _Nullable error))completion {
+    if ([base64ImageData isEqualToString:@""]) {
+        completion(nil, nil);
         return;
     }
-    _lastArtworkTerm = [NSString stringWithFormat:@"%@ %@ %@", songTitle, songArtist, songAlbum];
     
-    NSString* term = _lastArtworkTerm;
-    // The iTunes API doesn't return any result if * is included.
-    term = [term stringByReplacingOccurrencesOfString:@"*" withString:@""];
-    term = [term stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    // Check if the artwork is already in the cache
+    NSURL *cachedURL = self.artworkCache[base64ImageData];
+    if (cachedURL) {
+        NSLog(@"Using cached image URL: %@", cachedURL);
+        completion(cachedURL, nil);
+        return;
+    }
 
-    NSURL* url = [NSURL URLWithString:[kItunesApiEndpoint stringByAppendingString:term]];
-    NSURLSessionDataTask* task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData* _Nullable data, NSURLResponse* _Nullable response, NSError* _Nullable error) {
+    NSString *urlString = @"https://freeimage.host/api/1/upload";
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+
+    NSMutableData *body = [NSMutableData data];
+
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"key\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"6d207e02198a847aa98d0a2a901485a5\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // Add image base64 data
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"source\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", base64ImageData] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [request setHTTPBody:body];
+
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    NSURLSession *session = [NSURLSession sharedSession];
+
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            self->_lastArtworkUrl = nil;
-            completion(nil);
-            return;
-        }
+            NSLog(@"Error uploading image: %@", error);
+            completion(nil, error);
+        } else {
+            NSError *jsonError;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            if (jsonError) {
+                NSLog(@"JSON serialization error: %@", jsonError);
+                completion(nil, jsonError);
+            } else {
+                if ([json[@"status_code"] integerValue] == 200) {
+                    NSString *imageUrlString = json[@"image"][@"url"];
+                    if (imageUrlString) {
+                        NSURL *uploadedImageUrl = [NSURL URLWithString:imageUrlString];
+                        NSLog(@"Uploaded image URL: %@", uploadedImageUrl);
 
-        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        if (error) {
-            self->_lastArtworkUrl = nil;
-            completion(nil);
-            return;
+                        self.artworkCache[base64ImageData] = uploadedImageUrl;
+                        [self saveArtworkCache];
+                        
+                        completion(uploadedImageUrl, nil);
+                    } else {
+                        NSLog(@"No image URL found in the response.");
+                        NSError *noImageUrlError = [NSError errorWithDomain:@"com.example.error" code:0 userInfo:@{NSLocalizedDescriptionKey: @"No image URL found in the response."}];
+                        completion(nil, noImageUrlError);
+                    }
+                } else {
+                    NSLog(@"Failed to upload image: %@", json[@"status_txt"]);
+                    NSError *uploadError = [NSError errorWithDomain:@"com.example.error" code:[json[@"status_code"] integerValue] userInfo:@{NSLocalizedDescriptionKey: json[@"status_txt"]}];
+                    completion(nil, uploadError);
+                }
+            }
         }
-
-        NSArray* results = json[kItunesApiEndpointKeyResults];
-        if ([results count] > 0) {
-            NSString* artworkUrl = results[0][kItunesApiEndpointKeyArtworkUrl];
-            self->_lastArtworkUrl = [NSURL URLWithString:artworkUrl];
-            completion(self->_lastArtworkUrl);
-            return;
-        }
-
-        self->_lastArtworkUrl = nil;
-        completion(nil);
+        dispatch_semaphore_signal(semaphore);
     }];
 
     [task resume];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 }
 
 /**
@@ -432,6 +482,14 @@ void killRichPresence() {
  */
 - (NSString *)getArtistFromNowPlayingInfo:(NSDictionary *)nowPlayingInfo {
     return nowPlayingInfo[(__bridge NSString *)kMRMediaRemoteNowPlayingInfoArtist] ?: @"";
+}
+
+/**
+ * Extracts the album artwork to a base64 encoded string from the current now-playing info.
+ */
+- (NSString *)getArtworkBase64FromNowPlayingInfo:(NSDictionary *)nowPlayingInfo {
+    NSData *artworkData = nowPlayingInfo[(__bridge NSString *)kMRMediaRemoteNowPlayingInfoArtworkData];
+    return [artworkData base64EncodedStringWithOptions:0] ?: @"";
 }
 
 /**
@@ -459,6 +517,49 @@ void killRichPresence() {
 }
 
 /**
+ * Returns the file path for the artwork cache.
+ */
+- (NSString *)artworkCacheFilePath {
+    NSArray<NSURL *> *urls = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    NSURL *appSupportDirectory = urls.firstObject;
+    NSURL *musicRPCDirectory = [appSupportDirectory URLByAppendingPathComponent:@"MusicRPC" isDirectory:YES];
+    
+    NSError *error = nil;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:musicRPCDirectory.path]) {
+        [[NSFileManager defaultManager] createDirectoryAtURL:musicRPCDirectory withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"Error creating MusicRPC directory: %@", error);
+        }
+    }
+    
+    return [[musicRPCDirectory URLByAppendingPathComponent:@"artworkCache.plist"] path];
+}
+
+/**
+ * Saves the artwork cache to a file.
+ */
+- (void)saveArtworkCache {
+    NSString *filePath = [self artworkCacheFilePath];
+    BOOL success = [NSKeyedArchiver archiveRootObject:self.artworkCache toFile:filePath];
+    if (!success) {
+        NSLog(@"Failed to save artwork cache.");
+    }
+}
+
+/**
+ * Loads the artwork cache from a file.
+ */
+- (void)loadArtworkCache {
+    NSString *filePath = [self artworkCacheFilePath];
+    NSDictionary<NSString *, NSURL *> *cachedArtwork = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if (cachedArtwork) {
+        self.artworkCache = [cachedArtwork mutableCopy];
+    } else {
+        self.artworkCache = [NSMutableDictionary dictionary];
+    }
+}
+
+/**
  * Loads the user's preferences.
  */
 - (void)loadPreferences {
@@ -468,7 +569,7 @@ void killRichPresence() {
     pfTidalEnabled = [preferenceManager tidalEnabled];
     pfDeezerEnabled = [preferenceManager deezerEnabled];
     pfFoobar2000Enabled = [preferenceManager foobar2000Enabled];
-
+    
     enabledApps = [@[] mutableCopy];
     if (pfAppleMusicEnabled) {
         [enabledApps addObject:kBundleIdentifierAppleMusic];
