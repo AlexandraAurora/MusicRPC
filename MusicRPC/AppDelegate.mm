@@ -15,7 +15,7 @@
 #import "Utils/CFUtil.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong) NSMutableDictionary<NSString *, NSURL *> *artworkCache; // Add this property to hold the cache
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSURL *> *artworkCache;
 @end
 
 @implementation AppDelegate
