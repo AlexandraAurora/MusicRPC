@@ -11,6 +11,7 @@
     NSUserDefaults* _userDefaults;
 }
 @property(nonatomic, assign)BOOL appleMusicEnabled;
+@property(nonatomic, assign)BOOL iTunesEnabled;
 @property(nonatomic, assign)BOOL spotifyEnabled;
 @property(nonatomic, assign)BOOL tidalEnabled;
 @property(nonatomic, assign)BOOL deezerEnabled;

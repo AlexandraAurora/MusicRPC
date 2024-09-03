@@ -15,6 +15,7 @@
     AppDelegate* _appDelegate;
 }
 @property(nonatomic)CheckboxCell* appleMusicEnabledCell;
+@property(nonatomic)CheckboxCell* iTunesEnabledCell;
 @property(nonatomic)CheckboxCell* spotifyEnabledCell;
 @property(nonatomic)CheckboxCell* tidalEnabledCell;
 @property(nonatomic)CheckboxCell* deezerEnabledCell;

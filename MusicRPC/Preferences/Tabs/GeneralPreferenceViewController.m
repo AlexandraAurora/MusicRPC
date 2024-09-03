@@ -29,7 +29,7 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
-    [[[self view] window] setContentSize:NSSizeFromCGSize(CGSizeMake(430, 217))];
+    [[[self view] window] setContentSize:NSSizeFromCGSize(CGSizeMake(430, 244))];
 }
 
 - (void)loadView {
@@ -50,6 +50,20 @@
         [[[self appleMusicEnabledCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
         [[[self appleMusicEnabledCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
+    
+    [self setITunesEnabledCell:[[CheckboxCell alloc] init]];
+    [[self iTunesEnabledCell] setTarget:self];
+    [[self iTunesEnabledCell] setAction:@selector(setItunesEnabled)];
+    [[self iTunesEnabledCell] setCheckboxTitle:NSLocalizedString(@"iTunes", nil)];
+    [[self view] addSubview:[self iTunesEnabledCell]];
+
+    [[self iTunesEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [NSLayoutConstraint activateConstraints:@[
+        [[[self iTunesEnabledCell] heightAnchor] constraintEqualToConstant:20],
+        [[[self iTunesEnabledCell] topAnchor] constraintEqualToAnchor:[[self appleMusicEnabledCell] bottomAnchor] constant:8],
+        [[[self iTunesEnabledCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
+        [[[self iTunesEnabledCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
+    ]];
 
     [self setSpotifyEnabledCell:[[CheckboxCell alloc] init]];
     [[self spotifyEnabledCell] setTarget:self];
@@ -60,7 +74,7 @@
     [[self spotifyEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
     [NSLayoutConstraint activateConstraints:@[
         [[[self spotifyEnabledCell] heightAnchor] constraintEqualToConstant:20],
-        [[[self spotifyEnabledCell] topAnchor] constraintEqualToAnchor:[[self appleMusicEnabledCell] bottomAnchor] constant:8],
+        [[[self spotifyEnabledCell] topAnchor] constraintEqualToAnchor:[[self iTunesEnabledCell] bottomAnchor] constant:8],
         [[[self spotifyEnabledCell] leadingAnchor] constraintEqualToAnchor:[[self view] leadingAnchor] constant:40],
         [[[self spotifyEnabledCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
@@ -143,6 +157,12 @@
     [_appDelegate loadPreferences];
 }
 
+- (void)setItunesEnabled {
+    BOOL iTunesEnabled = [[self iTunesEnabledCell] getIsOn];
+    [_preferenceManager setPreference:@(iTunesEnabled) forKey:kPreferenceKeyItunesEnabled];
+    [_appDelegate loadPreferences];
+}
+
 - (void)setSpotifyEnabled {
     BOOL spotifyEnabled = [[self spotifyEnabledCell] getIsOn];
     [_preferenceManager setPreference:@(spotifyEnabled) forKey:kPreferenceKeySpotifyEnabled];
@@ -175,6 +195,7 @@
 
 - (void)loadPreferences {
     BOOL appleMusicEnabled = [_preferenceManager appleMusicEnabled];
+    BOOL iTunesEnabled = [_preferenceManager iTunesEnabled];
     BOOL spotifyEnabled = [_preferenceManager spotifyEnabled];
     BOOL tidalEnabled = [_preferenceManager tidalEnabled];
     BOOL deezerEnabled = [_preferenceManager deezerEnabled];
@@ -182,6 +203,7 @@
     BOOL launchAtLogin = [_preferenceManager launchAtLogin];
 
     [[self appleMusicEnabledCell] setOn:appleMusicEnabled];
+    [[self iTunesEnabledCell] setOn:iTunesEnabled];
     [[self spotifyEnabledCell] setOn:spotifyEnabled];
     [[self tidalEnabledCell] setOn:tidalEnabled];
     [[self deezerEnabledCell] setOn:deezerEnabled];
