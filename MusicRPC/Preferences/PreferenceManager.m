@@ -23,6 +23,7 @@
 - (void)reloadPreferences {
     [_userDefaults registerDefaults:@{
         kPreferenceKeyAppleMusicEnabled: @(kPreferenceKeyAppleMusicEnabledDefaultValue),
+        kPreferenceKeyItunesEnabled: @(kPreferenceKeyItunesEnabledDefaultValue),
         kPreferenceKeySpotifyEnabled: @(kPreferenceKeySpotifyEnabledDefaultValue),
         kPreferenceKeyTidalEnabled: @(kPreferenceKeyTidalEnabledDefaultValue),
         kPreferenceKeyDeezerEnabled: @(kPreferenceKeyDeezerEnabledDefaultValue),
@@ -31,6 +32,7 @@
     }];
 
     [self setAppleMusicEnabled:[[_userDefaults objectForKey:kPreferenceKeyAppleMusicEnabled] boolValue]];
+    [self setITunesEnabled:[[_userDefaults objectForKey:kPreferenceKeyItunesEnabled] boolValue]];
     [self setSpotifyEnabled:[[_userDefaults objectForKey:kPreferenceKeySpotifyEnabled] boolValue]];
     [self setTidalEnabled:[[_userDefaults objectForKey:kPreferenceKeyTidalEnabled] boolValue]];
     [self setDeezerEnabled:[[_userDefaults objectForKey:kPreferenceKeyDeezerEnabled] boolValue]];

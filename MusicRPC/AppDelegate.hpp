@@ -11,6 +11,7 @@ static NSUInteger const kTimeoutReconnect = 5;
 static NSUInteger const kTimeoutCallbacks = 1;
 
 static NSString* const kBundleIdentifierAppleMusic = @"com.apple.Music";
+static NSString* const kBundleIdentifierItunes = @"com.apple.iTunes";
 static NSString* const kBundleIdentifierSpotify = @"com.spotify.client";
 static NSString* const kBundleIdentifierTidal = @"com.tidal.desktop";
 static NSString* const kBundleIdentifierDeezer = @"com.deezer.deezer-desktop";
@@ -18,6 +19,7 @@ static NSString* const kBundleIdentifierFoobar2000 = @"com.foobar2000.mac";
 
 static NSString* const kClientIdNone = nil;
 static NSString* const kClientIdAppleMusic = @"1245257240890310686";
+static NSString* const kClientIdItunes = @"1280457380286693409";
 static NSString* const kClientIdSpotify = @"1245257414715113573";
 static NSString* const kClientIdTidal = @"1245257493966225488";
 static NSString* const kClientIdDeezer = @"1245257566779609141";
@@ -36,6 +38,7 @@ static NSUInteger threadVersion = 0;
 static NSMutableArray* enabledApps;
 
 static BOOL pfAppleMusicEnabled;
+static BOOL pfItunesEnabled;
 static BOOL pfSpotifyEnabled;
 static BOOL pfTidalEnabled;
 static BOOL pfDeezerEnabled;

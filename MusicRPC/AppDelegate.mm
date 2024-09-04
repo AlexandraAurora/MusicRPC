@@ -38,6 +38,7 @@
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     _clientIdMap = @{
         kBundleIdentifierAppleMusic: kClientIdAppleMusic,
+        kBundleIdentifierItunes: kClientIdItunes,
         kBundleIdentifierSpotify: kClientIdSpotify,
         kBundleIdentifierTidal: kClientIdTidal,
         kBundleIdentifierDeezer: kClientIdDeezer,
@@ -45,6 +46,7 @@
     };
     _serviceMap = @{
         kBundleIdentifierAppleMusic: NSLocalizedString(@"AppleMusic", nil),
+        kBundleIdentifierItunes: NSLocalizedString(@"iTunes", nil),
         kBundleIdentifierSpotify: NSLocalizedString(@"Spotify", nil),
         kBundleIdentifierTidal: NSLocalizedString(@"Tidal", nil),
         kBundleIdentifierDeezer: NSLocalizedString(@"Deezer", nil),
@@ -291,7 +293,7 @@ void updateRichPresence() {
         NSString* songArtist = [self getArtistFromNowPlayingInfo:self->_nowPlayingInfo];
         CGFloat songDuration = [self getDurationFromNowPlayingInfo:self->_nowPlayingInfo];
         CGFloat songElapsedTime = [self getTimeElapsedFromNowPlayingInfo:self->_nowPlayingInfo];
-
+        
         // The song title and artist are the minimum required info.
         // If they don't exist, don't update the RPC.
         if ([songTitle isEqualToString:@""] && [songArtist isEqualToString:@""]) {
@@ -464,6 +466,7 @@ void killRichPresence() {
 - (void)loadPreferences {
     PreferenceManager* preferenceManager = [[Environment sharedInstance] preferenceManager];
     pfAppleMusicEnabled = [preferenceManager appleMusicEnabled];
+    pfItunesEnabled = [preferenceManager iTunesEnabled];
     pfSpotifyEnabled = [preferenceManager spotifyEnabled];
     pfTidalEnabled = [preferenceManager tidalEnabled];
     pfDeezerEnabled = [preferenceManager deezerEnabled];
@@ -472,6 +475,9 @@ void killRichPresence() {
     enabledApps = [@[] mutableCopy];
     if (pfAppleMusicEnabled) {
         [enabledApps addObject:kBundleIdentifierAppleMusic];
+    }
+    if (pfItunesEnabled) {
+        [enabledApps addObject:kBundleIdentifierItunes];
     }
     if (pfSpotifyEnabled) {
         [enabledApps addObject:kBundleIdentifierSpotify];
