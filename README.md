@@ -7,9 +7,11 @@ All-In-One Discord Music RPC for Apple Music, Spotify, TIDAL and Deezer.
 ## Services
 MusicRPC technically supports all services (even on the browser), however it's limited to:
 - Apple Music
+- iTunes
 - Spotify
 - TIDAL
 - Deezer (limited - not all data is provided)
+- foobar2000
 
 If you want to have a service added, [open an issue](https://github.com/AlexandraAurora/MusicRPC/issues/new/choose).
 
