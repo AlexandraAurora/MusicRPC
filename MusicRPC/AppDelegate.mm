@@ -322,6 +322,7 @@ void updateRichPresence() {
         if (songDuration > 0) {
             CGFloat remainingTime = songDuration - songElapsedTime;
             activity.endTimestamp = time(nullptr) + (NSUInteger)remainingTime;
+            activity.startTimestamp = time(nullptr) - (NSUInteger)songElapsedTime;
         }
 
         NSString* lookupEndpoint = self->_lookupEndpointMap[bundleIdentifier];
