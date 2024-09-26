@@ -18,13 +18,21 @@
     NSTabViewItem* generalTabItem = [[NSTabViewItem alloc] initWithIdentifier:nil];
     [generalTabItem setViewController:[[GeneralPreferenceViewController alloc] init]];
     [generalTabItem setLabel:NSLocalizedString(@"PreferencesGeneralTitle", nil)];
-    [generalTabItem setImage:[NSImage imageWithSystemSymbolName:@"gearshape" accessibilityDescription:nil]];
+
+    if (@available(macOS 11.0, *)) {
+        [generalTabItem setImage:[NSImage imageWithSystemSymbolName:@"gearshape" accessibilityDescription:nil]];
+    }
+
     [self addTabViewItem:generalTabItem];
 
     NSTabViewItem* aboutTabItem = [[NSTabViewItem alloc] initWithIdentifier:nil];
     [aboutTabItem setViewController:[[AboutPreferenceViewController alloc] init]];
     [aboutTabItem setLabel:NSLocalizedString(@"PreferencesAboutTitle", nil)];
-    [aboutTabItem setImage:[NSImage imageWithSystemSymbolName:@"info.circle" accessibilityDescription:nil]];
+
+    if (@available(macOS 11.0, *)) {
+        [aboutTabItem setImage:[NSImage imageWithSystemSymbolName:@"info.circle" accessibilityDescription:nil]];
+    }
+
     [self addTabViewItem:aboutTabItem];
 }
 
