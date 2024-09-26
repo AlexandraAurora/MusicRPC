@@ -78,8 +78,12 @@
  */
 - (void)createStatusItemMenu {
     [_statusItem setMenu:[[NSMenu alloc] init]];
-    [[_statusItem button] setImage:[NSImage imageWithSystemSymbolName:@"music.note.list" accessibilityDescription:nil]];
-    
+    if (@available(macOS 11.0, *)) {
+        [[_statusItem button] setImage:[NSImage imageWithSystemSymbolName:@"music.note.list" accessibilityDescription:nil]];
+    } else {
+        [[_statusItem button] setTitle:[CFUtil getNameFromBundle:[NSBundle mainBundle]]];
+    }
+
     NSMenuItem* nowPlayingTitleItem;
     if (_nowPlayingInfo && _isPlaying) {
         NSString* songTitle = [self getTitleFromNowPlayingInfo:_nowPlayingInfo];
