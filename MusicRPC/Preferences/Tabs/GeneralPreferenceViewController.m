@@ -35,11 +35,10 @@
 - (void)loadView {
     [self setView:[[NSView alloc] init]];
 
-    NSString* appleMusicEnabledCellTitle = [NSString stringWithFormat:@"%@:", NSLocalizedString(@"PreferencesGeneralEnabledApps", nil)];
     [self setAppleMusicEnabledCell:[[CheckboxCell alloc] init]];
     [[self appleMusicEnabledCell] setTarget:self];
     [[self appleMusicEnabledCell] setAction:@selector(setAppleMusicEnabled)];
-    [[self appleMusicEnabledCell] setTitle:appleMusicEnabledCellTitle];
+    [[self appleMusicEnabledCell] setTitle:NSLocalizedString(@"PreferencesGeneralEnabledApps", nil)];
     [[self appleMusicEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceAppleMusic", nil)];
     [[self view] addSubview:[self appleMusicEnabledCell]];
 
@@ -131,13 +130,11 @@
         [[[self separatorCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
 
-    NSString* launchAtLoginCellTitle = [NSString stringWithFormat:@"%@:", NSLocalizedString(@"PreferencesGeneralStartup", nil)];
-    NSString* launchAtLoginCellCheckboxTitle = NSLocalizedString(@"PreferencesGeneralStartupLabel", nil);
     [self setLaunchAtLoginCell:[[CheckboxCell alloc] init]];
     [[self launchAtLoginCell] setTarget:self];
     [[self launchAtLoginCell] setAction:@selector(setLaunchAtLogin)];
-    [[self launchAtLoginCell] setTitle:launchAtLoginCellTitle];
-    [[self launchAtLoginCell] setCheckboxTitle:launchAtLoginCellCheckboxTitle];
+    [[self launchAtLoginCell] setTitle:NSLocalizedString(@"PreferencesGeneralStartup", nil)];
+    [[self launchAtLoginCell] setCheckboxTitle:NSLocalizedString(@"PreferencesGeneralStartupLabel", nil)];
     [[self view] addSubview:[self launchAtLoginCell]];
 
     [[self launchAtLoginCell] setTranslatesAutoresizingMaskIntoConstraints:NO];

@@ -34,6 +34,6 @@
 }
 
 - (void)setTitle:(NSString *)title {
-    [[self label] setStringValue:title];
+    [[self label] setStringValue:[title stringByAppendingString:@":"]];
 }
 @end
