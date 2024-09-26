@@ -8,6 +8,7 @@
 #import "AboutPreferenceViewController.h"
 #import "Cells/SeparatorCell.h"
 #import "../../Utils/CFUtil.h"
+#import "../../Extensions/Foundation/NSBundle+LocalizedParameters.h"
 
 @implementation AboutPreferenceViewController
 - (void)viewDidAppear {
@@ -34,8 +35,10 @@
         [[[self titleLabel] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-32]
     ]];
 
+    NSString* version = [CFUtil getVersionFromBundle:[NSBundle mainBundle]];
+    NSString* versionLabelText = NSLocalizedStringWithParameters(@"PreferencesAboutVersion", @{@"Version": version});
     [self setVersionLabel:[[NSTextField alloc] init]];
-    [[self versionLabel] setStringValue:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"AboutPreferencesVersion", nil), [CFUtil getVersionFromBundle:[NSBundle mainBundle]]]];
+    [[self versionLabel] setStringValue:versionLabelText];
     [[self versionLabel] setFont:[NSFont systemFontOfSize:14]];
     [[self versionLabel] setBezeled:NO];
     [[self versionLabel] setDrawsBackground:NO];
@@ -64,7 +67,7 @@
     [self setSponsorButton:[[NSButton alloc] init]];
     [[self sponsorButton] setTarget:self];
     [[self sponsorButton] setAction:@selector(openSponsoring)];
-    [[self sponsorButton] setTitle:NSLocalizedString(@"AboutPreferencesSponsor", nil)];
+    [[self sponsorButton] setTitle:NSLocalizedString(@"PreferencesAboutSponsor", nil)];
     [[self sponsorButton] setFont:[NSFont systemFontOfSize:14 weight:NSFontWeightMedium]];
     [[self sponsorButton] setAlignment:NSTextAlignmentLeft];
     [[self sponsorButton] setContentTintColor:[NSColor labelColor]];
@@ -79,7 +82,7 @@
     ]];
 
     [self setSponsorLabel:[[NSTextField alloc] init]];
-    [[self sponsorLabel] setStringValue:NSLocalizedString(@"AboutPreferencesSponsorAcknowledgement", nil)];
+    [[self sponsorLabel] setStringValue:NSLocalizedString(@"PreferencesAboutSponsorAcknowledgement", nil)];
     [[self sponsorLabel] setFont:[NSFont systemFontOfSize:11]];
     [[self sponsorLabel] setBezeled:NO];
     [[self sponsorLabel] setDrawsBackground:NO];
@@ -108,7 +111,7 @@
     [self setGithubButton:[[NSButton alloc] init]];
     [[self githubButton] setTarget:self];
     [[self githubButton] setAction:@selector(openGitHub)];
-    [[self githubButton] setTitle:NSLocalizedString(@"AboutPreferencesGitHub", nil)];
+    [[self githubButton] setTitle:NSLocalizedString(@"PreferencesAboutGitHub", nil)];
     [[self githubButton] setFont:[NSFont systemFontOfSize:14 weight:NSFontWeightMedium]];
     [[self githubButton] setAlignment:NSTextAlignmentLeft];
     [[self githubButton] setContentTintColor:[NSColor labelColor]];
@@ -122,9 +125,12 @@
         [[[self githubButton] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-32]
     ]];
 
-    NSString* credits = [NSString stringWithFormat:@"%@\n\n%@\n%@\n%@", NSLocalizedString(@"AboutPreferencesCredits", nil), NSLocalizedString(@"AboutPreferencesCreditsLeptos", nil), NSLocalizedString(@"AboutPreferencesCreditsEinTim23", nil), NSLocalizedString(@"AboutPreferencesCreditsNextFire", nil)];
+    NSString* creditsLabelText = NSLocalizedString(@"PreferencesAboutCredits", nil);
+    creditsLabelText = [NSString stringWithFormat:@"%@\n\n%@", creditsLabelText, NSLocalizedString(@"PreferencesAboutCreditsLeptos", nil)];
+    creditsLabelText = [NSString stringWithFormat:@"%@\n%@", creditsLabelText, NSLocalizedString(@"PreferencesAboutCreditsEinTim23", nil)];
+    creditsLabelText = [NSString stringWithFormat:@"%@\n%@", creditsLabelText, NSLocalizedString(@"PreferencesAboutCreditsNextFire", nil)];
     [self setCreditsLabel:[[NSTextField alloc] init]];
-    [[self creditsLabel] setStringValue:credits];
+    [[self creditsLabel] setStringValue:creditsLabelText];
     [[self creditsLabel] setFont:[NSFont systemFontOfSize:11]];
     [[self creditsLabel] setBezeled:NO];
     [[self creditsLabel] setDrawsBackground:NO];
@@ -156,7 +162,9 @@
     [dateFormatter setDateFormat:@"yyyy"];
     NSString* year = [dateFormatter stringFromDate:[NSDate date]];
 
-    [[self copyrightLabel] setStringValue:[NSString stringWithFormat:@"© %@ %@", year, NSLocalizedString(@"AboutPreferencesCopyright", nil)]];
+    NSString* author = NSLocalizedString(@"MetaAuthor", nil);
+    NSString* copyrightLabelText = NSLocalizedStringWithParameters(@"PreferencesAboutCopyright", @{@"Year": year, @"Author": author});
+    [[self copyrightLabel] setStringValue:copyrightLabelText];
     [[self copyrightLabel] setFont:[NSFont systemFontOfSize:12]];
     [[self copyrightLabel] setBezeled:NO];
     [[self copyrightLabel] setDrawsBackground:NO];

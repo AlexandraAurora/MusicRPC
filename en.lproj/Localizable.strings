@@ -6,40 +6,36 @@
 
 */
 
-"StatusItemNowPlaying" = "Now Playing";
-"StatusItemNotPlaying" = "Not Playing";
-"StatusItemAbout" = "About";
-"StatusItemPreferences" = "Preferences";
-"StatusItemQuit" = "Quit";
+"MetaAuthor" = "Alexandra Aurora Göttlicher";
 
-// Ignore these.
-"AppleMusic" = "Apple Music";
-"iTunes" = "iTunes";
-"Spotify" = "Spotify";
-"Tidal" = "TIDAL";
-"Deezer" = "Deezer";
-"Foobar2000" = "foobar2000";
+"ServiceAppleMusic" = "Apple Music"; // Ignore this.
+"ServiceItunes" = "iTunes"; // Ignore this.
+"ServiceSpotify" = "Spotify"; // Ignore this.
+"ServiceTidal" = "TIDAL"; // Ignore this.
+"ServiceDeezer" = "Deezer"; // Ignore this.
+"ServiceFoobar2000" = "foobar2000"; // Ignore this.
 
-"StatePrefix" = "by";
-"SmallImageDescription" = "Listening to";
-"LookupButtonTitle" = "Search on";
+"StatusItemRootNowPlaying" = "Now Playing";
+"StatusItemRootNotPlaying" = "Not Playing";
+"StatusItemRootAbout" = "About %ProjectName%";
+"StatusItemRootPreferences" = "Preferences";
+"StatusItemRootQuit" = "Quit %ProjectName%...";
 
-"PreferencesTabGeneral" = "General";
-"PreferencesTabGeneralPreferences" = "General Preferences";
-"PreferencesTabAbout" = "About";
-"PreferencesTabAboutPreferences" = "About Preferences";
+"RichPresenceStatePrefix" = "by %Artist%";
+"RichPresenceSmallImageDescription" = "Listening to %Service%";
+"RichPresenceLookupButtonTitle" = "Search on %Service%";
 
-"GeneralPreferencesEnabledApps" = "Enabled Apps";
-"GeneralPreferencesStartup" = "Startup";
-"GeneralPreferencesStartupLabel" = "Launch at login";
-
-"AboutPreferencesVersion" = "Version";
-"AboutPreferencesSponsor" = "Sponsor this project";
-"AboutPreferencesSponsorAcknowledgement" = "Let me know that you like what I do.";
-"AboutPreferencesGitHub" = "View Source Code on GitHub";
-"AboutPreferencesCredits" = "Thanks to you and everyone who has helped in any way.";
-"AboutPreferencesCreditsLeptos" = "Helped setting up MediaRemote - leptos-null";
-"AboutPreferencesCreditsEinTim23" = "Updated and provided the old official Discord RPC library - EinTim23";
-"AboutPreferencesCreditsNextFire" = "Inspired the way to get the artwork - NextFire";
-// Ignore this.
-"AboutPreferencesCopyright" = "Alexandra Aurora Göttlicher";
+"PreferencesGeneralTitle" = "General";
+"PreferencesGeneralEnabledApps" = "Enabled Apps";
+"PreferencesGeneralStartup" = "Startup";
+"PreferencesGeneralStartupLabel" = "Launch at login";
+"PreferencesAboutTitle" = "About";
+"PreferencesAboutVersion" = "Version %Version%";
+"PreferencesAboutSponsor" = "Sponsor this project";
+"PreferencesAboutSponsorAcknowledgement" = "Let me know that you like what I do.";
+"PreferencesAboutGitHub" = "View Source Code on GitHub";
+"PreferencesAboutCredits" = "Thanks to you and everyone who has helped in any way.";
+"PreferencesAboutCreditsLeptos" = "Helped setting up MediaRemote - leptos-null";
+"PreferencesAboutCreditsEinTim23" = "Updated and provided the old official Discord RPC library - EinTim23";
+"PreferencesAboutCreditsNextFire" = "Inspired the way to get the artwork - NextFire";
+"PreferencesAboutCopyright" = "© %Year% %Author%"; // Ignore this.

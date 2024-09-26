@@ -13,6 +13,7 @@
 #import "Preferences/PreferenceManager.h"
 #import "Preferences/PreferenceWindowController.h"
 #import "Utils/CFUtil.h"
+#import "Extensions/Foundation/NSBundle+LocalizedParameters.h"
 
 @interface AppDelegate ()
 @end
@@ -45,12 +46,12 @@
         kBundleIdentifierFoobar2000: kClientIdFoobar2000
     };
     _serviceMap = @{
-        kBundleIdentifierAppleMusic: NSLocalizedString(@"AppleMusic", nil),
-        kBundleIdentifierItunes: NSLocalizedString(@"iTunes", nil),
-        kBundleIdentifierSpotify: NSLocalizedString(@"Spotify", nil),
-        kBundleIdentifierTidal: NSLocalizedString(@"Tidal", nil),
-        kBundleIdentifierDeezer: NSLocalizedString(@"Deezer", nil),
-        kBundleIdentifierFoobar2000: NSLocalizedString(@"Foobar2000", nil)
+        kBundleIdentifierAppleMusic: NSLocalizedString(@"ServiceAppleMusic", nil),
+        kBundleIdentifierItunes: NSLocalizedString(@"ServiceItunes", nil),
+        kBundleIdentifierSpotify: NSLocalizedString(@"ServiceSpotify", nil),
+        kBundleIdentifierTidal: NSLocalizedString(@"ServiceTidal", nil),
+        kBundleIdentifierDeezer: NSLocalizedString(@"ServiceDeezer", nil),
+        kBundleIdentifierFoobar2000: NSLocalizedString(@"ServiceFoobar2000", nil)
     };
     _lookupEndpointMap = @{
         kBundleIdentifierAppleMusic: kLookupEndpointAppleMusic,
@@ -85,7 +86,7 @@
         NSString* songArtist = [self getArtistFromNowPlayingInfo:_nowPlayingInfo];
         NSString* songAlbum = [self getAlbumFromNowPlayingInfo:_nowPlayingInfo];
         
-        nowPlayingTitleItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"StatusItemNowPlaying", nil) action:nil keyEquivalent:@""];
+        nowPlayingTitleItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"StatusItemRootNowPlaying", nil) action:nil keyEquivalent:@""];
         [nowPlayingTitleItem setEnabled:NO];
         [[_statusItem menu] addItem:nowPlayingTitleItem];
         
@@ -100,24 +101,25 @@
         [artistItem setIndentationLevel:1];
         [[_statusItem menu] addItem:artistItem];
     } else {
-        nowPlayingTitleItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"StatusItemNotPlaying", nil) action:nil keyEquivalent:@""];
+        nowPlayingTitleItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"StatusItemRootNotPlaying", nil) action:nil keyEquivalent:@""];
         [nowPlayingTitleItem setEnabled:NO];
         [[_statusItem menu] addItem:nowPlayingTitleItem];
     }
     
     [[_statusItem menu] addItem:[NSMenuItem separatorItem]];
 
-    NSString* aboutItemTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"StatusItemAbout", nil), [CFUtil getNameFromBundle:[NSBundle mainBundle]]];
+    NSString* projectName = [CFUtil getNameFromBundle:[NSBundle mainBundle]];
+    NSString* aboutItemTitle = NSLocalizedStringWithParameters(@"StatusItemRootAbout", @{@"ProjectName": projectName});
     NSMenuItem* aboutItem = [[NSMenuItem alloc] initWithTitle:aboutItemTitle action:@selector(openAbout) keyEquivalent:@""];
     [[_statusItem menu] addItem:aboutItem];
 
-    NSString* preferencesItemTitle = NSLocalizedString(@"StatusItemPreferences", nil);
+    NSString* preferencesItemTitle = NSLocalizedString(@"StatusItemRootPreferences", nil);
     NSMenuItem* preferencesItem = [[NSMenuItem alloc] initWithTitle:preferencesItemTitle action:@selector(openPreferences) keyEquivalent:@","];
     [[_statusItem menu] addItem:preferencesItem];
     
     [[_statusItem menu] addItem:[NSMenuItem separatorItem]];
-    
-    NSString* quitItemTitle = [NSString stringWithFormat:@"%@ %@...", NSLocalizedString(@"StatusItemQuit", nil), [CFUtil getNameFromBundle:[NSBundle mainBundle]]];
+
+    NSString* quitItemTitle = NSLocalizedStringWithParameters(@"StatusItemRootQuit", @{@"ProjectName": projectName});
     NSMenuItem* quitItem = [[NSMenuItem alloc] initWithTitle:quitItemTitle action:@selector(quit) keyEquivalent:@"q"];
     [[_statusItem menu] addItem:quitItem];
 }
@@ -293,6 +295,7 @@ void updateRichPresence() {
         NSString* songArtist = [self getArtistFromNowPlayingInfo:self->_nowPlayingInfo];
         CGFloat songDuration = [self getDurationFromNowPlayingInfo:self->_nowPlayingInfo];
         CGFloat songElapsedTime = [self getTimeElapsedFromNowPlayingInfo:self->_nowPlayingInfo];
+        NSString* serviceName = self->_serviceMap[bundleIdentifier];
         
         // The song title and artist are the minimum required info.
         // If they don't exist, don't update the RPC.
@@ -304,12 +307,12 @@ void updateRichPresence() {
         DiscordRichPresence activity{};
         activity.type = LISTENING;
         activity.details = [songTitle UTF8String];
-        activity.state = [[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"StatePrefix", nil), songArtist] UTF8String];
+        activity.state = [NSLocalizedStringWithParameters(@"RichPresenceStatePrefix", @{@"Artist": songArtist}) UTF8String];
 
         if (artworkUrl) {
             activity.largeImageKey = [[artworkUrl absoluteString] UTF8String];
 
-            NSString* description = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"SmallImageDescription", nil), self->_serviceMap[bundleIdentifier]];
+            NSString* description = NSLocalizedStringWithParameters(@"RichPresenceSmallImageDescription", @{@"Service": serviceName});
             activity.smallImageKey = [@"appicon" UTF8String];
             activity.smallImageText = [description UTF8String];
         } else {
@@ -327,7 +330,7 @@ void updateRichPresence() {
 
         NSString* lookupEndpoint = self->_lookupEndpointMap[bundleIdentifier];
         if (lookupEndpoint) {
-            NSString* button1Title = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"LookupButtonTitle", nil), self->_serviceMap[bundleIdentifier]];
+            NSString* button1Title = NSLocalizedStringWithParameters(@"RichPresenceLookupButtonTitle", @{@"Service": serviceName});
 
             NSString* query = [NSString stringWithFormat:@"%@ %@", songTitle, songArtist];
             [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];

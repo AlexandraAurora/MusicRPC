@@ -31,6 +31,7 @@
 		A88F1FA22BDFE7A700349F4F /* DescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88F1F9C2BDFE7A700349F4F /* DescriptionCell.m */; };
 		A8B28FA02BD46C3E0067030B /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B28F9F2BD46C3E0067030B /* MediaRemote.framework */; };
 		A8B4FE582C09541D0049985B /* AbstractPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B4FE572C09541D0049985B /* AbstractPreferenceViewController.m */; };
+		A8D670592CA5702400A27C39 /* NSBundle+LocalizedParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D670582CA5701D00A27C39 /* NSBundle+LocalizedParameters.m */; };
 		A8FDF23A28BBF151005ADC35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8FDF23928BBF151005ADC35 /* main.m */; };
 		A8FDF24228BBF7FB005ADC35 /* MusicRPCAutoLauncher.app in Copy Files */ = {isa = PBXBuildFile; fileRef = A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B2125888AF95D2694492A291 /* PreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2125623128B2C3606CA7580 /* PreferenceManager.m */; };
@@ -133,6 +134,8 @@
 		A8B28F9F2BD46C3E0067030B /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = DEVELOPER_DIR; };
 		A8B4FE562C0953FF0049985B /* AbstractPreferenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractPreferenceViewController.h; sourceTree = "<group>"; };
 		A8B4FE572C09541D0049985B /* AbstractPreferenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbstractPreferenceViewController.m; sourceTree = "<group>"; };
+		A8D670572CA56E6900A27C39 /* NSBundle+LocalizedParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LocalizedParameters.h"; sourceTree = "<group>"; };
+		A8D670582CA5701D00A27C39 /* NSBundle+LocalizedParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LocalizedParameters.m"; sourceTree = "<group>"; };
 		A8FDF22C28BBF150005ADC35 /* MusicRPCAutoLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicRPCAutoLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FDF23928BBF151005ADC35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8FDF23B28BBF151005ADC35 /* MusicRPCAutoLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicRPCAutoLauncher.entitlements; sourceTree = "<group>"; };
@@ -285,6 +288,7 @@
 		A85569FD28BA5BC5006FAD47 /* MusicRPC */ = {
 			isa = PBXGroup;
 			children = (
+				A8D6705A2CA5734A00A27C39 /* Extensions */,
 				B212509874454099121E0B4C /* Preferences */,
 				B2125F6DD83EBBE1893E27B3 /* Utils */,
 				A81D702D2C7FC62D00B82020 /* RPC */,
@@ -314,6 +318,23 @@
 				A80EDFD92BD2EBD5004152B6 /* AboutPreferenceViewController.h */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A8D6705A2CA5734A00A27C39 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A8D6705B2CA5736000A27C39 /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8D6705B2CA5736000A27C39 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				A8D670572CA56E6900A27C39 /* NSBundle+LocalizedParameters.h */,
+				A8D670582CA5701D00A27C39 /* NSBundle+LocalizedParameters.m */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		A8FDF22D28BBF150005ADC35 /* MusicRPCAutoLauncher */ = {
@@ -491,6 +512,7 @@
 				A81D70332C7FC62D00B82020 /* discord_register_linux.cpp in Sources */,
 				A81D70342C7FC62D00B82020 /* discord_register_win.cpp in Sources */,
 				A81D70352C7FC62D00B82020 /* connection_win.cpp in Sources */,
+				A8D670592CA5702400A27C39 /* NSBundle+LocalizedParameters.m in Sources */,
 				A81D70362C7FC62D00B82020 /* discord_register_osx.m in Sources */,
 				A88F1F9E2BDFE7A700349F4F /* CheckboxCell.m in Sources */,
 				B2125DB99943D1992E86644F /* GeneralPreferenceViewController.m in Sources */,

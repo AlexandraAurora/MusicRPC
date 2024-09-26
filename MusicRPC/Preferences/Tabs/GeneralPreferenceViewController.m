@@ -35,12 +35,11 @@
 - (void)loadView {
     [self setView:[[NSView alloc] init]];
 
-    NSString* appleMusicEnabledCellTitle = [NSString stringWithFormat:@"%@:", NSLocalizedString(@"GeneralPreferencesEnabledApps", nil)];
     [self setAppleMusicEnabledCell:[[CheckboxCell alloc] init]];
     [[self appleMusicEnabledCell] setTarget:self];
     [[self appleMusicEnabledCell] setAction:@selector(setAppleMusicEnabled)];
-    [[self appleMusicEnabledCell] setTitle:appleMusicEnabledCellTitle];
-    [[self appleMusicEnabledCell] setCheckboxTitle:NSLocalizedString(@"AppleMusic", nil)];
+    [[self appleMusicEnabledCell] setTitle:NSLocalizedString(@"PreferencesGeneralEnabledApps", nil)];
+    [[self appleMusicEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceAppleMusic", nil)];
     [[self view] addSubview:[self appleMusicEnabledCell]];
 
     [[self appleMusicEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -54,7 +53,7 @@
     [self setITunesEnabledCell:[[CheckboxCell alloc] init]];
     [[self iTunesEnabledCell] setTarget:self];
     [[self iTunesEnabledCell] setAction:@selector(setItunesEnabled)];
-    [[self iTunesEnabledCell] setCheckboxTitle:NSLocalizedString(@"iTunes", nil)];
+    [[self iTunesEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceItunes", nil)];
     [[self view] addSubview:[self iTunesEnabledCell]];
 
     [[self iTunesEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -68,7 +67,7 @@
     [self setSpotifyEnabledCell:[[CheckboxCell alloc] init]];
     [[self spotifyEnabledCell] setTarget:self];
     [[self spotifyEnabledCell] setAction:@selector(setSpotifyEnabled)];
-    [[self spotifyEnabledCell] setCheckboxTitle:NSLocalizedString(@"Spotify", nil)];
+    [[self spotifyEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceSpotify", nil)];
     [[self view] addSubview:[self spotifyEnabledCell]];
 
     [[self spotifyEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -82,7 +81,7 @@
     [self setTidalEnabledCell:[[CheckboxCell alloc] init]];
     [[self tidalEnabledCell] setTarget:self];
     [[self tidalEnabledCell] setAction:@selector(setTidalEnabled)];
-    [[self tidalEnabledCell] setCheckboxTitle:NSLocalizedString(@"Tidal", nil)];
+    [[self tidalEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceTidal", nil)];
     [[self view] addSubview:[self tidalEnabledCell]];
 
     [[self tidalEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -96,7 +95,7 @@
     [self setDeezerEnabledCell:[[CheckboxCell alloc] init]];
     [[self deezerEnabledCell] setTarget:self];
     [[self deezerEnabledCell] setAction:@selector(setDeezerEnabled)];
-    [[self deezerEnabledCell] setCheckboxTitle:NSLocalizedString(@"Deezer", nil)];
+    [[self deezerEnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceDeezer", nil)];
     [[self view] addSubview:[self deezerEnabledCell]];
 
     [[self deezerEnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -110,7 +109,7 @@
     [self setFoobar2000EnabledCell:[[CheckboxCell alloc] init]];
     [[self foobar2000EnabledCell] setTarget:self];
     [[self foobar2000EnabledCell] setAction:@selector(setFoobar2000Enabled)];
-    [[self foobar2000EnabledCell] setCheckboxTitle:NSLocalizedString(@"Foobar2000", nil)];
+    [[self foobar2000EnabledCell] setCheckboxTitle:NSLocalizedString(@"ServiceFoobar2000", nil)];
     [[self view] addSubview:[self foobar2000EnabledCell]];
 
     [[self foobar2000EnabledCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -131,13 +130,11 @@
         [[[self separatorCell] trailingAnchor] constraintEqualToAnchor:[[self view] trailingAnchor] constant:-40]
     ]];
 
-    NSString* launchAtLoginCellTitle = [NSString stringWithFormat:@"%@:", NSLocalizedString(@"GeneralPreferencesStartup", nil)];
-    NSString* launchAtLoginCellCheckboxTitle = NSLocalizedString(@"GeneralPreferencesStartupLabel", nil);
     [self setLaunchAtLoginCell:[[CheckboxCell alloc] init]];
     [[self launchAtLoginCell] setTarget:self];
     [[self launchAtLoginCell] setAction:@selector(setLaunchAtLogin)];
-    [[self launchAtLoginCell] setTitle:launchAtLoginCellTitle];
-    [[self launchAtLoginCell] setCheckboxTitle:launchAtLoginCellCheckboxTitle];
+    [[self launchAtLoginCell] setTitle:NSLocalizedString(@"PreferencesGeneralStartup", nil)];
+    [[self launchAtLoginCell] setCheckboxTitle:NSLocalizedString(@"PreferencesGeneralStartupLabel", nil)];
     [[self view] addSubview:[self launchAtLoginCell]];
 
     [[self launchAtLoginCell] setTranslatesAutoresizingMaskIntoConstraints:NO];
