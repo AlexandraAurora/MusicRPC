@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SPMDiscordRPC",
+        "repositoryURL": "https://github.com/getencore/SPMDiscordRPC.git",
+        "state": {
+          "branch": "main",
+          "revision": "c24dcbd342931b4a7dcaf196a21b3da60f961e0d",
+          "version": null
+        }
+      },
+      {
+        "package": "SPMSPTPersistentCache",
+        "repositoryURL": "https://github.com/getencore/SPMSPTPersistentCache.git",
+        "state": {
+          "branch": null,
+          "revision": "e87a695b1615bbf24d1b68aba4697321f35634f0",
+          "version": "1.1.2"
+        }
+      },
+      {
+        "package": "SPMxxHash",
+        "repositoryURL": "https://github.com/getencore/SPMxxHash.git",
+        "state": {
+          "branch": null,
+          "revision": "585fdd6c587559928f5aca8c8db5481f563b278a",
+          "version": "0.8.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
